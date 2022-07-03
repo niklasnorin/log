@@ -27,7 +27,7 @@
 #### Manual fan cron script
 * Connect iDRAC Eth interface to local network and find IP
 * sudo apt-get install ipmitool
-* 
+* See [ipmi_fan_control.sh](ipmi_fan_control.sh)
 
 #### OMSA - Dell EMC OpenManage
 To get info out of PERC RAID cards.
