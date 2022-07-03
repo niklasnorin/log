@@ -1,5 +1,7 @@
 #!/bin/bash
 #
+# Source: https://www.reddit.com/r/homelab/comments/7xqb11/dell_fan_noise_control_silence_your_poweredge/
+#
 # crontab -l > mycron
 # echo "#" >> mycron
 # echo "# At every 2nd minute" >> mycron
