@@ -40,3 +40,24 @@ To get info out of PERC RAID cards.
 ### Setup
 * Using Kolla Ansible
 * See (private) [keel-openstack-kolla](https://github.com/niklasnorin/keel-openstack-kolla)
+* Manually added default flavours
+
+### One-time config
+
+#### Add public SSH key
+* openstack keypair create --public-key ~/.ssh/id_rsa.pub mykey
+
+#### Allow ping and SSH by default
+* openstack security group rule create --proto icmp DEFAULT_SECURITY_GROUP_ID
+* openstack security group rule create --proto tcp --dst-port 22 DEFAULT_SECURITY_GROUP_ID
+
+## Glance examples
+
+### Add e.g. Ubuntu
+* Example from [here](https://computingforgeeks.com/adding-images-openstack-glance/)
+* wget http://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img
+```openstack image create \
+    --container-format bare \
+    --disk-format qcow2 \
+    --file focal-server-cloudimg-amd64.img \
+    Ubuntu-20.04```
