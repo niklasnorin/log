@@ -39,4 +39,4 @@ To get info out of PERC RAID cards.
 
 ### Setup
 * Using Kolla Ansible
-* 
+* See (private) [keel-openstack-kolla](https://github.com/niklasnorin/keel-openstack-kolla)
