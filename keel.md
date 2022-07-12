@@ -43,21 +43,10 @@ To get info out of PERC RAID cards.
 * Manually added default flavours
 
 ### One-time config
+* Make sure to run *-once scripts in [keel-openstack-kolla](https://github.com/niklasnorin/keel-openstack-kolla)/scrips
 
-#### Add public SSH key
-* openstack keypair create --public-key ~/.ssh/id_rsa.pub mykey
-
-#### Allow ping and SSH by default
-* openstack security group rule create --proto icmp DEFAULT_SECURITY_GROUP_ID
-* openstack security group rule create --proto tcp --dst-port 22 DEFAULT_SECURITY_GROUP_ID
-
-## Glance examples
-
-### Add e.g. Ubuntu
-* Example from [here](https://computingforgeeks.com/adding-images-openstack-glance/)
-* wget http://cloud-images.ubuntu.com/focal/current/focal-server-cloudimg-amd64.img
-```openstack image create \
-    --container-format bare \
-    --disk-format qcow2 \
-    --file focal-server-cloudimg-amd64.img \
-    Ubuntu-20.04```
+### Manila
+* I had an issue creating shares, which was logged in Horizon Share User Messages as "allocate host: No storage could be allocated for this share request. Trying again with a different size or share type may succeed.".
+* `manila service-list` showed no manila-share and `docker ps | grep manila-share` showed the service as unhealthy
+* Diving into Kibana for programname:manila-share showed error "ERROR oslo_service.service Stderr: 'ovs-vsctl: no bridge named br-int\n'"
+* FIX: On host `sudo ovs-vsctl add-br br-int`
