@@ -103,8 +103,11 @@ keel@keel:~$ sudo ovs-vsctl show
     * openvswitch_vswitchd (it's log will spew out a "cannot connect" error until neutron_openvswitch_agent started)
     * neutron_openvswitch_agent
 
-### Manila initial issues
-* I had an issue creating shares, which was logged in Horizon Share User Messages as "allocate host: No storage could be allocated for this share request. Trying again with a different size or share type may succeed.".
-* `manila service-list` showed no manila-share and `docker ps | grep manila-share` showed the service as unhealthy
-* Diving into Kibana for programname:manila-share showed error "ERROR oslo_service.service Stderr: 'ovs-vsctl: no bridge named br-int\n'"
-* FIX: On host `sudo ovs-vsctl add-br br-int`
+### Creating manila share
+* Create share: `manila create NFS 1 --name demo-share2 --share-network demo-share-network1 --share-type default_share_type --public`
+* Whitelist access from home network: `manila access-allow demo-share2 ip 192.168.1.0/24`
+* Mount on OSX CLI: `sudo mount -o vers=4,resvport -t nfs 192.168.1.163:/shares/share-51e5f995-14b4-409b-ba89-634be72b098c ./mount_test`
+* Mount on Ubuntu:
+  * Install NFS support `sudo apt install nfs-common`
+  * Mount: `sudo mount -v 192.168.1.163:/shares/share-51e5f995-14b4-409b-ba89-634be72b098c ./test_folder`  
+* Only tested public (no user/pass) share so far 
