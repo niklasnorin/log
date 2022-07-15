@@ -111,3 +111,12 @@ keel@keel:~$ sudo ovs-vsctl show
   * Install NFS support `sudo apt install nfs-common`
   * Mount: `sudo mount -v 192.168.1.163:/shares/share-51e5f995-14b4-409b-ba89-634be72b098c ./test_folder`  
 * Only tested public (no user/pass) share so far 
+
+
+## Misc useful commands
+
+### List disks
+`lsblk`
+
+### Live disk IO
+`dstat -tdD total,sda,sdb,sdc 60`
