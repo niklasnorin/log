@@ -45,7 +45,8 @@ To get info out of PERC RAID cards.
 ### One-time config
 * Make sure to run *-once scripts in [keel-openstack-kolla](https://github.com/niklasnorin/keel-openstack-kolla)/scrips
 
-### Troublehooting "br-int does not exist" errors
+### Troublehooting 
+#### "br-int does not exist" errors
 * Sanity check to see if this is an issue:
   * When everything works, then `sudo ovs-vsctl show` on the host should spit out a ton of info like:
 ```
@@ -102,6 +103,11 @@ keel@keel:~$ sudo ovs-vsctl show
     * openvswitch_db
     * openvswitch_vswitchd (it's log will spew out a "cannot connect" error until neutron_openvswitch_agent started)
     * neutron_openvswitch_agent
+
+#### Various rabbitmq issues
+* First try again - it seems flaky
+* If the server has changed the IP address, then make sure to manually remove the entry in /etc/hosts
+* See https://bugs.launchpad.net/kolla-ansible/+bug/1853578
 
 ### Creating manila share
 * Create share: `manila create NFS 1 --name demo-share2 --share-network demo-share-network1 --share-type default_share_type --public`
