@@ -45,6 +45,11 @@ To get info out of PERC RAID cards.
 ### One-time config
 * Make sure to run *-once scripts in [keel-openstack-kolla](https://github.com/niklasnorin/keel-openstack-kolla)/scrips
 
+### Horizon login
+* Default port is 80
+* Default user is admin 
+* Default password can be found at `grep keystone_admin_password /etc/kolla/passwords.yml`
+
 ### Troublehooting 
 #### "br-int does not exist" errors
 * Sanity check to see if this is an issue:
