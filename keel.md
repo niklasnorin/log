@@ -44,6 +44,9 @@ To get info out of PERC RAID cards.
 
 ### One-time config
 * Make sure to run *-once scripts in [keel-openstack-kolla](https://github.com/niklasnorin/keel-openstack-kolla)/scrips
+* N.B. There are currently a few hard-coded values for Manila:
+  * The network in the `manila share-network-create ...` command in `setup-storage-once
+  * `admin_network_id` and `admin_subnet_id`in `manila.conf` 
 
 ### Horizon login
 * Default port is 80
