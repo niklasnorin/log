@@ -35,6 +35,10 @@ To get info out of PERC RAID cards.
 * sudo apt-get install srvadmin-base srvadmin-storageservices srvadmin-omcommon
 * sudo systemctl start dsm_sa_datamgrd && sudo systemctl start dsm_sa_eventmgrd
 
+#### Netdata for monitoring
+* `wget -O /tmp/netdata-kickstart.sh https://my-netdata.io/kickstart.sh && sh /tmp/netdata-kickstart.sh --no-updates --disable-telemetry`
+* Access on port 19999
+
 ## OpenStack
 
 ### Setup
